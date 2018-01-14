@@ -21,19 +21,19 @@ defmodule CryptoCurry do
     (apply_conversion() <|> exchange_rate_from_usd()).("GBP")
   end
 
-  defp exchange_rate_from_usd do
+  def exchange_rate_from_usd do
     exchange_rate().("USD")
   end
 
-  defcurryp apply_conversion(rate, {crypto, value_usd}) do
+  defcurryp exchange_rate(from, to) do
+    Support.exchange_rate(from, to)
+  end
+
+  defcurry apply_conversion(rate, {crypto, value_usd}) do
     {crypto, value_usd * rate}
   end
 
   defcurryp get_quantity({crypto, value_gbp}, amount) do
     {crypto, amount / value_gbp}
-  end
-
-  defcurryp exchange_rate(from, to) do
-    Support.exchange_rate(from, to)
   end
 end

@@ -1,4 +1,4 @@
-defmodule CryptoNonCurry do
+defmodule CryptoElixir do
   alias Support
 
   def buy_crypto_with_gbp(amount) do
